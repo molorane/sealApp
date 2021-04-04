@@ -22,6 +22,14 @@ spring:
 
 ---
 
+# Postgres profile
+spring:
+  config:
+    import: optional:configserver:http://localhost:7777
+    activate:
+      on-profile: postgres
+---
+
 # test profile
 spring:
   profiles: test
