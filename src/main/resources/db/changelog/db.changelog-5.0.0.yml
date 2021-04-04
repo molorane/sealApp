@@ -8,27 +8,27 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  id
-                        type:  BIGSERIAL
+                        type:  INT
                         autoIncrement: true
                         constraints:
                             primaryKey: true
                     - column:
                         name:  user_id
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_campus_student_user_id
                            references: account(id)
                            nullable: false
                     - column:
                         name:  institution_id
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_campus_student_institution_id
                            references: institution_branch(id)
                            nullable: false
                     - column:
                         name:  course_id
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_campus_student_course_id
                            references: course(id)
@@ -47,14 +47,14 @@ databaseChangeLog:
                         defaultValue: 0
                     - column:
                         name:  status
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_campus_student_status
                            references: status(id)
                            nullable: false
                     - column:
                         name:  recorded_by
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_campus_student_record_by
                            references: account(id)
@@ -67,7 +67,7 @@ databaseChangeLog:
                            nullable: false
                     - column:
                         name:  updated_by
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_campus_student_updated_by
                            references: account(id)
@@ -84,20 +84,20 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  id
-                        type:  BIGSERIAL
+                        type:  INT
                         autoIncrement: true
                         constraints:
                             primaryKey: true
                     - column:
                         name:  bride_groom
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_wedding_bride_groom
                            references: account(id)
                            nullable: false
                     - column:
                         name:  bride
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_wedding_bride
                            references: account(id)
@@ -109,21 +109,21 @@ databaseChangeLog:
                            nullable: false
                     - column:
                         name:  pastor
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_wedding_pastor
                            references: account(id)
                            nullable: false
                     - column:
                         name:  bride_groom_witness
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_wedding_bride_groom_witness
                            references: account(id)
                            nullable: false
                     - column:
                         name:  bride_witness
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_wedding_bride_witness
                            references: account(id)
@@ -137,7 +137,7 @@ databaseChangeLog:
                         type:  text
                     - column:
                         name:  host_church
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_wedding_host_church
                            references: church(id)
@@ -147,7 +147,7 @@ databaseChangeLog:
                         type:  varchar(100)
                     - column:
                         name:  recorded_by
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_wedding_record_by
                            references: account(id)
@@ -160,7 +160,7 @@ databaseChangeLog:
                            nullable: false
                     - column:
                         name:  updated_by
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_wedding_updated_by
                            references: account(id)
@@ -177,7 +177,7 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  id
-                        type:  BIGSERIAL
+                        type:  INT
                         autoIncrement: true
                         constraints:
                             primaryKey: true
@@ -218,20 +218,20 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  id
-                        type:  BIGSERIAL
+                        type:  INT
                         autoIncrement: true
                         constraints:
                             primaryKey: true
                     - column:
                         name:  student
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_student_position_student
                            references: student(user_id)
                            nullable: false
                     - column:
                         name:  position
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_student_position_position
                            references: position(id)
@@ -241,7 +241,7 @@ databaseChangeLog:
                         type:  int
                     - column:
                         name:  recorded_by
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_student_position_record_by
                            references: account(id)
@@ -254,7 +254,7 @@ databaseChangeLog:
                            nullable: false
                     - column:
                         name:  updated_by
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_student_position_updated_by
                            references: account(id)
@@ -271,7 +271,7 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  id
-                        type:  BIGSERIAL
+                        type:  INT
                         autoIncrement: true
                         constraints:
                             primaryKey: true
@@ -317,34 +317,34 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  id
-                        type:  BIGSERIAL
+                        type:  INT
                         autoIncrement: true
                         constraints:
                             primaryKey: true
                     - column:
                         name:  stmc_id
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_stmc_registration_stmc_id
                            references: special_meeting(id)
                            nullable: false
                     - column:
                         name:  student
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_stmc_registration_student
                            references: account(id)
                            nullable: false
                     - column:
                         name:  course
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_stmc_registration_course
                            references: stmc_course(id)
                            nullable: false
                     - column:
                         name:  recorded_by
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_stmc_registration_record_by
                            references: account(id)
@@ -357,7 +357,7 @@ databaseChangeLog:
                            nullable: false
                     - column:
                         name:  updated_by
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_stmc_registration_updated_by
                            references: account(id)
@@ -383,14 +383,14 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  member
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_member_language_member
                            references: account_info(user_id)
                            nullable: false
                     - column:
                         name:  language
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_member_language_language
                            references: language(id)
@@ -413,7 +413,7 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  id
-                        type:  BIGSERIAL
+                        type:  INT
                         autoIncrement: true
                         constraints:
                             primaryKey: true
@@ -449,14 +449,14 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  role
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_role_permission_role
                            references: app_role(id)
                            nullable: false
                     - column:
                         name:  permission
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_role_permission_role_permission
                            references: permission(id)

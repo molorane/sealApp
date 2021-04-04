@@ -1,14 +1,5 @@
 databaseChangeLog:
     - changeSet:
-        id: 2.0.1.addPrimaryKey_Account_Role
-        author: Mothusi Molorane
-        changes:
-            - addPrimaryKey:
-               columnNames: user_id, role_id
-               constraintName: pk_account_role
-               tableName: account_role
-               validate: true
-    - changeSet:
         id: 2.0.2.addUniqueConstraint_Account_Role
         author: Mothusi Molorane
         changes:
@@ -282,7 +273,7 @@ databaseChangeLog:
             - loadData:
                 columns:
                     - column:
-                        name: user_id
+                        name: id
                         type: numeric
                     - column:
                         name: username

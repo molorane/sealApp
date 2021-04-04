@@ -8,7 +8,7 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  id
-                        type:  BIGSERIAL
+                        type:  INT
                         autoIncrement: true
                         constraints:
                             primaryKey: true
@@ -49,20 +49,20 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  id
-                        type:  BIGSERIAL
+                        type:  INT
                         autoIncrement: true
                         constraints:
                             primaryKey: true
                     - column:
                         name:  meeting_category
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_special_meeting_meeting_categry_id
                            references: meeting_category(id)
                            nullable: false
                     - column:
                         name:  church_id
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_special_meeting_church_id
                            references: church(id)
@@ -102,7 +102,7 @@ databaseChangeLog:
                         defaultValue: 0
                     - column:
                         name:  recorded_by
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                             foreignKeyName: fk_special_meeting_recorded_by
                             references: account(id)
@@ -115,7 +115,7 @@ databaseChangeLog:
                            nullable: false
                     - column:
                         name:  updated_by
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_special_meeting_updated_by
                            references: account(id)
@@ -132,20 +132,20 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  id
-                        type:  BIGSERIAL
+                        type:  INT
                         autoIncrement: true
                         constraints:
                             primaryKey: true
                     - column:
                         name:  meeting_id
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_special_meeting_attendance_meeting_id
                            references: special_meeting(id)
                            nullable: false
                     - column:
                         name:  session_id
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_special_meeting_attendance_session_id
                            references: service_session(id)
@@ -181,7 +181,7 @@ databaseChangeLog:
                         defaultValue: 0
                     - column:
                         name:  recorded_by
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_special_meeting_attendance_recorded_by
                            references: account(id)
@@ -194,7 +194,7 @@ databaseChangeLog:
                            nullable: false
                     - column:
                         name:  updated_by
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_special_meeting_attendance_updated_by
                            references: account(id)
@@ -204,19 +204,19 @@ databaseChangeLog:
                         defaultValueComputed: NOW()
                     - column:
                         name:  sign1
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_special_meeting_attendance_signature1
                            references: account(id)
                     - column:
                         name:  sign2
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_special_meeting_attendance_signature2
                            references: account(id)
                     - column:
                         name:  sign3
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_special_meeting_attendance_signature3
                            references: account(id)
@@ -229,20 +229,20 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  id
-                        type:  BIGSERIAL
+                        type:  INT
                         autoIncrement: true
                         constraints:
                             primaryKey: true
                     - column:
                         name:  spm_id
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_special_meeting_register_church_id
                            references: spm_attendance(id)
                            nullable: false
                     - column:
                         name:  user_id
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                            foreignKeyName: fk_special_meeting_register_user_id
                            references: account(id)
@@ -283,7 +283,7 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  user_id
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                             primaryKey: true
                             foreignKeyName: fk_convertion_info_user_id
@@ -296,7 +296,7 @@ databaseChangeLog:
                            nullable: true
                     - column:
                         name: church_id
-                        type: BIGSERIAL
+                        type: INT
                         constraints:
                             foreignKeyName: fk_convertion_info_church_id
                             references: church(id)
@@ -308,7 +308,7 @@ databaseChangeLog:
                            nullable: false
                     - column:
                         name:  spiritual_father_id
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                             foreignKeyName: fk_convertion_info_spiritual_father
                             references: account(id)
@@ -330,13 +330,13 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  id
-                        type:  BIGSERIAL
+                        type:  INT
                         autoIncrement: true
                         constraints:
                             primaryKey: true
                     - column:
                         name:  att_id
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                             foreignKeyName: fk_offering_info_att_id
                             references: attendance(id)
@@ -348,7 +348,7 @@ databaseChangeLog:
                            nullable: true
                     - column:
                         name:  recorded_by
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                             foreignKeyName: fk_offering_info_recorded_by
                             references: account(id)
@@ -361,14 +361,14 @@ databaseChangeLog:
                            nullable: false
                     - column:
                         name: signature1
-                        type: BIGSERIAL
+                        type: INT
                         constraints:
                             foreignKeyName: fk_offering_info_signature1
                             references: account(id)
                             nullable: true
                     - column:
                         name:  update_by
-                        type:  BIGSERIAL
+                        type:  INT
                         constraints:
                             foreignKeyName: fk_offering_info_update_by
                             references: account(id)
@@ -386,7 +386,7 @@ databaseChangeLog:
                 columns:
                     - column:
                         name:  id
-                        type:  BIGSERIAL
+                        type:  INT
                         autoIncrement: true
                         constraints:
                             primaryKey: true
@@ -427,7 +427,7 @@ databaseChangeLog:
                 columns:
                     - column: 
                         name: offering_type
-                        type: BIGSERIAL
+                        type: INT
                         constraints:
                            foreignKeyName: fk_offering_offering_type
                            references: offering_type(id)
