@@ -296,12 +296,6 @@ databaseChangeLog:
                     - column:
                         name: is_active
                         type: boolean
-                    - column:
-                        name: created_date
-                        type: date
-                    - column:
-                        name: expiry_date
-                        type: date
                 encoding: UTF-8
                 file: ../data/accounts.csv
                 relativeToChangelogFile: true
