@@ -1,0 +1,524 @@
+databaseChangeLog:
+    - changeSet:
+        id:  4.0.0.special-meeting-category
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  meeting_category
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name: name
+                        type: varchar(50)
+                        constraints:
+                           nullable: false
+                    - column:
+                        name: abv
+                        type: varchar(5)
+                        constraints:
+                           nullable: false
+    - changeSet:
+        id: 4.0.1.load-meeting-categories
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: abv
+                        type: string
+                encoding: UTF-8
+                file: ../data/meeting-categories.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: meeting_category
+                usePreparedStatements: true
+    - changeSet:
+        id:  4.0.2.special-meeting
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  special_meeting
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name:  meeting_category
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_special_meeting_meeting_categry_id
+                           references: meeting_category(id)
+                           nullable: false
+                    - column:
+                        name:  church_id
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_special_meeting_church_id
+                           references: church(id)
+                           nullable: true
+                    - column:
+                        name: other_place
+                        type: varchar(100)
+                    - column:
+                        name:  start_date
+                        type:  date
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  end_date
+                        type:  date
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  extected_attendance
+                        type:  int
+                        defaultValue: 0
+                    - column:
+                        name:  actual_attendance
+                        type:  int
+                        defaultValue: 0
+                    - column:
+                        name:  budget
+                        type:  decimal
+                        defaultValue: 0
+                    - column:
+                        name:  amount_raised
+                        type:  decimal
+                        defaultValue: 0
+                    - column:
+                        name:  amount_used
+                        type:  decimal
+                        defaultValue: 0
+                    - column:
+                        name:  recorded_by
+                        type:  BIGSERIAL
+                        constraints:
+                            foreignKeyName: fk_special_meeting_recorded_by
+                            references: account(user_id)
+                            nullable: false
+                    - column:
+                        name: record_date
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  updated_by
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_special_meeting_updated_by
+                           references: account(user_id)
+                    - column:
+                        name: update_date
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()
+    - changeSet:
+        id:  4.0.2.special-meeting-attendance
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  spm_attendance
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name:  meeting_id
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_special_meeting_attendance_meeting_id
+                           references: special_meeting(id)
+                           nullable: false
+                    - column:
+                        name:  session_id
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_special_meeting_attendance_session_id
+                           references: service_session(id)
+                           nullable: false
+                    - column:
+                        name: meeting_date
+                        type: date
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  adult_male
+                        type:  int
+                        defaultValue: 0
+                    - column:
+                        name:  adult_female
+                        type:  int
+                        defaultValue: 0
+                    - column:
+                        name:  youth_male
+                        type:  int
+                        defaultValue: 0
+                    - column:
+                        name:  youth_female
+                        type:  int
+                        defaultValue: 0
+                    - column:
+                        name:  child_male
+                        type:  int
+                        defaultValue: 0
+                    - column:
+                        name:  child_female
+                        type:  int
+                        defaultValue: 0
+                    - column:
+                        name:  recorded_by
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_special_meeting_attendance_recorded_by
+                           references: account(user_id)
+                           nullable: false
+                    - column:
+                        name: record_date
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  updated_by
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_special_meeting_attendance_updated_by
+                           references: account(user_id)
+                    - column:
+                        name: update_date
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()
+                    - column:
+                        name:  sign1
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_special_meeting_attendance_signature1
+                           references: account(user_id)
+                    - column:
+                        name:  sign2
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_special_meeting_attendance_signature2
+                           references: account(user_id)
+                    - column:
+                        name:  sign3
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_special_meeting_attendance_signature3
+                           references: account(user_id)
+    - changeSet:
+        id:  4.0.3.attendance_register
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  sp_attendance_register
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name:  spm_id
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_special_meeting_register_church_id
+                           references: spm_attendance(id)
+                           nullable: false
+                    - column:
+                        name:  user_id
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_special_meeting_register_user_id
+                           references: account(user_id)
+                           nullable: false
+    - changeSet:
+        id: 4.1.0.load-institutions
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: id
+                        type: numeric
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: abv
+                        type: string
+                    - column:
+                        name: institution_type_id
+                        type: numeric
+                    - column:
+                        name: city_id
+                        type: numeric
+                encoding: UTF-8
+                file: ../data/institutions.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: institution
+                usePreparedStatements: true
+    - changeSet:
+        id:  4.1.7.add-table-convertion-info
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  convertion_info
+                columns:
+                    - column:
+                        name:  user_id
+                        type:  BIGSERIAL
+                        constraints:
+                            primaryKey: true
+                            foreignKeyName: fk_convertion_info_user_id
+                            references: account(user_id)
+                            nullable: false
+                    - column:
+                        name:  convertion_date
+                        type:  date
+                        constraints:
+                           nullable: true
+                    - column:
+                        name: church_id
+                        type: BIGSERIAL
+                        constraints:
+                            foreignKeyName: fk_convertion_info_church_id
+                            references: church(id)
+                            nullable: true
+                    - column:
+                        name:  other_place
+                        type:  varchar(50)
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  spiritual_father_id
+                        type:  BIGSERIAL
+                        constraints:
+                            foreignKeyName: fk_convertion_info_spiritual_father
+                            references: account(user_id)
+                            nullable: true
+                    - column:
+                        name:  spiritual_father
+                        type:  varchar(50)
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  comments
+                        type:  text
+    - changeSet:
+        id:  4.1.8.add-table-offering
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  offering
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name:  att_id
+                        type:  BIGSERIAL
+                        constraints:
+                            foreignKeyName: fk_offering_info_att_id
+                            references: attendance(id)
+                            nullable: false
+                    - column:
+                        name:  amount
+                        type:  decimal
+                        constraints:
+                           nullable: true
+                    - column:
+                        name:  recorded_by
+                        type:  BIGSERIAL
+                        constraints:
+                            foreignKeyName: fk_offering_info_recorded_by
+                            references: account(user_id)
+                            nullable: false
+                    - column:
+                        name:  record_date
+                        type:  date
+                        defaultValueComputed: NOW()
+                        constraints:
+                           nullable: false
+                    - column:
+                        name: signature1
+                        type: BIGSERIAL
+                        constraints:
+                            foreignKeyName: fk_offering_info_signature1
+                            references: account(user_id)
+                            nullable: true
+                    - column:
+                        name:  update_by
+                        type:  BIGSERIAL
+                        constraints:
+                            foreignKeyName: fk_offering_info_update_by
+                            references: account(user_id)
+                            nullable: false
+                    - column:
+                        name:  update_date
+                        type:  date
+                        defaultValueComputed: NOW()
+    - changeSet:
+        id:  4.1.9.add-table-offering-type
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  offering_type
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name: name
+                        type: varchar(50)
+                        constraints:
+                           nullable: false
+                    - column:
+                        name: abv
+                        type: varchar(5)
+                        constraints:
+                           nullable: false
+    - changeSet:
+        id: 4.2.0.load-offering-types
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: abv
+                        type: string
+                encoding: UTF-8
+                file: ../data/offering-types.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: offering_type
+                usePreparedStatements: true
+    - changeSet:
+        id: 4.2.1.add-column-offering-type
+        author: Mothusi Molorane
+        changes:
+            - addColumn:
+                tableName: offering
+                columns:
+                    - column: 
+                        name: offering_type
+                        type: BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_offering_offering_type
+                           references: offering_type(id)
+                           nullable: false
+    - changeSet:
+        id: 4.2.2.add-unique-contraint-course-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_course_name
+                tableName: course
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.3.add-unique-contraint-role-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_role_name
+                tableName: app_role
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.4.add-unique-contraint-church-category-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_church_category_name
+                tableName: church_category
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.5.add-unique-contraint-institution-type-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_institution_type_name
+                tableName: institution_type
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.6.add-unique-contraint-meeting-category-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_meeting_category_name
+                tableName: meeting_category
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.7.add-unique-contraint-offering-type-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_offering_type_name
+                tableName: offering_type
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.8.add-unique-contraint-qualification-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_qualification_name
+                tableName: qualification
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.9.add-unique-contraint-service-session-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_service_session_name
+                tableName: service_session
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.10.add-unique-contraint-service-type-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_service_type_name
+                tableName: service_type
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.11.add-unique-contraint-status-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_status_name
+                tableName: status
+                columnNames: name
+                validate:  true

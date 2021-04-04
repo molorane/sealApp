@@ -1,0 +1,182 @@
+databaseChangeLog:
+    - changeSet:
+        id: 3.0.0.load-churches
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: church_category_id
+                        type: numeric
+                    - column:
+                        name: city_id
+                        type: numeric
+                    - column:
+                        name: street_name
+                        type: string
+                    - column:
+                        name: street_number
+                        type: string
+                    - column:
+                        name: house_no
+                        type: string
+                    - column:
+                        name: latitude
+                        type: string
+                    - column:
+                        name: longitude
+                        type: string
+                    - column:
+                        name: website
+                        type: numeric
+                    - column:
+                        name: telephone
+                        type: string
+                    - column:
+                        name: faxno
+                        type: string
+                    - column:
+                        name: postalcode
+                        type: string
+                    - column:
+                        name: recorded_by
+                        type: numeric
+                    - column:
+                        name: record_date
+                        type: date
+                    - column:
+                        name: updated_by
+                        type: numeric
+                    - column:
+                        name: update_date
+                        type: date
+                    - column:
+                        name: start_date
+                        type: date
+                    - column:
+                        name: started_by
+                        type: numeric
+                    - column:
+                        name: startplace
+                        type: string
+                    - column:
+                        name: comment
+                        type: string
+                    - column:
+                        name: status_id
+                        type: numeric
+                encoding: UTF-8
+                file: ../data/churches.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: church
+                usePreparedStatements: true
+    - changeSet:
+        id: 3.0.0.load-attendance
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: church_id
+                        type: numeric
+                    - column:
+                        name: service_id
+                        type: numeric
+                    - column:
+                        name: session_id
+                        type: string
+                    - column:
+                        name: service_date
+                        type: date
+                    - column:
+                        name: adult_male
+                        type: string
+                    - column:
+                        name: adult_female
+                        type: string
+                    - column:
+                        name: youth_male
+                        type: string
+                    - column:
+                        name: youth_female
+                        type: string
+                    - column:
+                        name: child_male
+                        type: numeric
+                    - column:
+                        name: child_female
+                        type: string
+                    - column:
+                        name: recorded_by
+                        type: string
+                    - column:
+                        name: record_date
+                        type: string
+                    - column:
+                        name: updated_by
+                        type: numeric
+                    - column:
+                        name: update_date
+                        type: date
+                encoding: UTF-8
+                file: ../data/attendance.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: attendance
+                usePreparedStatements: true
+    - changeSet:
+        id: 3.0.2.update-column-values
+        author: Mothusi Molorane
+        changes:
+            - update:
+                columns:
+                    - column:
+                        name:  name
+                        value: Location Branch
+                    - column:
+                        name:  abv
+                        value: LB
+                tableName:  church_category
+                where:  id=1
+            - update:
+                columns:
+                    - column:
+                        name:  abv
+                        value: HQ
+                tableName:  church_category
+                where:  id=2
+    - changeSet:
+        id: 3.0.3.add-campus-church-category
+        author:  Mothusi Molorane
+        changes:
+            - insert:
+                columns:
+                    - column:
+                        name:  name
+                        value:  Campus Church
+                    - column:
+                        name:  abv
+                        value:  CC
+                tableName:  church_category
+    - changeSet:
+        id: 3.0.4.update-location-church-values
+        author: Mothusi Molorane
+        changes:
+            - update:
+                columns:
+                    - column:
+                        name:  name
+                        value: Location Church
+                    - column:
+                        name:  abv
+                        value: LC
+                tableName:  church_category
+                where:  id=1
+    -  changeSet:  
+        id:  3.0.5.rename-table-to-member_qualification 
+        author:  Mothusi Molorane 
+        changes:  
+            -  renameTable:   
+                newTableName:  member_qualification  
+                oldTableName:  student 

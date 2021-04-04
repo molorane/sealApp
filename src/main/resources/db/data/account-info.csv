@@ -1,0 +1,6 @@
+user_id,last_name,first_name,other_name,dob,gender,marital_status,race,title_id,birth_city,mother_tongue,recorded_by
+2018,Portia,Khumalo,Dear,1991-05-04,FEMALE,SINGLE,BLACK,1,1,1,2018
+2019,Molorane,Mothusi,Michael,1991-05-04,MALE,SINGLE,BLACK,1,1,1,2019
+2014098616,Mahlalela,Nomfundo,Millicent,1988-05-04,FEMALE,SINGLE,BLACK,1,1,1,2014098616
+2014098617,Fedora,RedHat,JBoss,1995-05-04,MALE,SINGLE,BLACK,1,1,1,2014098617
+2014098618,Molorane,Blessing,Blessy,1991-05-04,FEMALE,SINGLE,BLACK,1,1,1,2014098618

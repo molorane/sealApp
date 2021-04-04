@@ -1,0 +1,27 @@
+id,name,abv,institution_type_id,city_id
+1,University of the Free State,UFS,4,5
+2,Central University of technology,CUT,4,5
+3,University of Kwazulu Natala,UKZN,4,2
+4,University of pretoria,UP,4,2
+5,University of south africa,UNISA,4,2
+6,Tshwane University of Technology,TUT,4,2
+7,Sefako Makgatho Health Sciences University,SMU,4,2
+8,University of the Witwatersrand,WITS,4,1
+9,University of Johannesburg,UJ,4,1
+10,Vaal University of Technology,VUT,4,1
+11,University of cape town,UCT,4,2
+12,Cape Peninsula University of technology,CPUT,4,5
+13,North West University,NWU,4,4
+14,University of Stellenbosch,UST,4,1
+15,Nelson Mandela Metropolitan University,NMMU,4,3
+16,Walter Sisulu University,WSU,4,2
+17,Durban University of Technolog,DUT,4,2
+18,University of Limpopo,UL,4,3
+19,University of Zululand,UZ,4,4
+20,University of the Western Cape,UWC,4,5
+21,University of Fort Hare,UFH,4,1
+22,University of Venda,UV,4,3
+23,Mangosuthu University of Technology,MUT,4,5
+24,Rhodes University,RU,4,5
+25,University of Mpumalanga,UM,4,2
+26,Sol Plaatje University,SPU,4,2

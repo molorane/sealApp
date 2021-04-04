@@ -1,0 +1,379 @@
+databaseChangeLog:
+    - changeSet:
+        id: 2.0.1.addPrimaryKey_Account_Role
+        author: Mothusi Molorane
+        changes:
+            - addPrimaryKey:
+               columnNames: user_id, role_id
+               constraintName: pk_account_role
+               tableName: account_role
+               validate: true
+    - changeSet:
+        id: 2.0.2.addUniqueConstraint_Account_Role
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+               columnNames: institution_id, branch_name
+               constraintName: uk_institution_branch
+               tableName: institution_branch
+               validate: true
+    - changeSet:
+        id: 2.0.3.addPrimaryKey_Student_Institution
+        author: Mothusi Molorane
+        changes:
+            - addPrimaryKey:
+               columnNames: user_id, institution_branch_id,course_id,qualification_id,year_completed
+               constraintName: pk_student_institution
+               tableName: student
+               validate: true
+    - changeSet:
+        id: 2.0.4.addUniqueConstraint_Church
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+               columnNames: street_name, street_number
+               constraintName: uk_church_address
+               tableName: church
+               validate: true
+    - changeSet:
+        id: 2.0.5.load-roles
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: id
+                        type: numeric
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: desc
+                        type: string
+                encoding: UTF-8
+                file: ../data/roles.csv
+                quotchar: ''''
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: app_role
+                usePreparedStatements: true
+    - changeSet:
+        id: 2.0.6.load-continents
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: id
+                        type: numeric
+                    - column:
+                        name: name
+                        type: string
+                encoding: UTF-8
+                file: ../data/continents.csv
+                quotchar: ''''
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: continent
+                usePreparedStatements: true
+    - changeSet:
+        id: 2.0.7.load-countries
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: id
+                        type: numeric
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: continent_id
+                        type: numeric
+                encoding: UTF-8
+                file: ../data/countries.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: country
+                usePreparedStatements: true
+    - changeSet:
+        id: 2.0.8.load-south-africa-states
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: abv
+                        type: string
+                    - column:
+                        name: country_id
+                        type: numeric
+                encoding: UTF-8
+                file: ../data/south-africa-states.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: state
+                usePreparedStatements: true
+    - changeSet:
+        id: 2.0.9.load-lesotho-states
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: abv
+                        type: string
+                    - column:
+                        name: country_id
+                        type: numeric
+                encoding: UTF-8
+                file: ../data/lesotho-states.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: state
+                usePreparedStatements: true
+    - changeSet:
+        id: 2.1.0.load-qualifications
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                encoding: UTF-8
+                file: ../data/qualifications.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: qualification
+                usePreparedStatements: true
+    - changeSet:
+        id: 2.1.1.load-church-services
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                encoding: UTF-8
+                file: ../data/church-services.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: service_type
+                usePreparedStatements: true
+    - changeSet:
+        id: 2.1.2.load-institution-type
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                encoding: UTF-8
+                file: ../data/institution-types.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: institution_type
+                usePreparedStatements: true
+    - changeSet:
+        id: 2.1.3.load-statuses
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                encoding: UTF-8
+                file: ../data/statuses.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: status
+                usePreparedStatements: true
+    - changeSet:
+        id: 2.1.4.load-service-sessions
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                encoding: UTF-8
+                file: ../data/service-sessions.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: service_session
+                usePreparedStatements: true
+    - changeSet:
+        id: 3.0.1.add-column-church-category-abv
+        author: Mothusi Molorane
+        changes:
+            - addColumn:
+                tableName: church_category
+                columns:
+                    - column: 
+                        name: abv
+                        type: varchar(6)
+    - changeSet:
+        id: 2.1.5.load-church-categories
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: id
+                        type: numeric
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: abv
+                        type: string
+                encoding: UTF-8
+                file: ../data/church-categories.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: church_category
+                usePreparedStatements: true
+    - changeSet:
+        id: 2.1.5.load-cities
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: id
+                        type: numeric
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: abv
+                        type: string
+                    - column:
+                        name: state_id
+                        type: numeric
+                encoding: UTF-8
+                file: ../data/cities.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: city
+                usePreparedStatements: true
+    - changeSet:
+        id: 2.1.6.checkConstraint_DateIsSunday
+        author: Mothusi Molorane
+        changes:
+            - sql:
+               ALTER TABLE attendance ADD CONSTRAINT CHK_DateIsSunday CHECK (WEEKDAY(service_date)=6);
+    - changeSet:
+        id: 2.1.5.load-accounts
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: user_id
+                        type: numeric
+                    - column:
+                        name: username
+                        type: string
+                    - column:
+                        name: email
+                        type: string
+                    - column:
+                        name: password
+                        type: string
+                    - column:
+                        name: abv
+                        type: string
+                    - column:
+                        name: status
+                        type: numeric
+                    - column:
+                        name: is_locked
+                        type: boolean
+                    - column:
+                        name: is_active
+                        type: boolean
+                    - column:
+                        name: created_date
+                        type: date
+                    - column:
+                        name: expiry_date
+                        type: date
+                encoding: UTF-8
+                file: ../data/accounts.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: account
+                usePreparedStatements: true
+    - changeSet:
+        id: 2.1.5.load-account-info
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: user_id
+                        type: numeric
+                    - column:
+                        name: last_name
+                        type: string
+                    - column:
+                        name: first_name
+                        type: string
+                    - column:
+                        name: other_name
+                        type: string
+                    - column:
+                        name: dob
+                        type: date
+                    - column:
+                        name: gender
+                        type: string
+                    - column:
+                        name: title_id
+                        type: numeric
+                    - column:
+                        name: birth_city
+                        type: numeric
+                    - column:
+                        name: mother_tongue
+                        type: numeric
+                    - column:
+                        name: recorded_by
+                        type: numeric
+                encoding: UTF-8
+                file: ../data/account-info.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: account_info
+                usePreparedStatements: true
+    - changeSet:
+        id: 2.1.6.load-account-roles
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: user_id
+                        type: numeric
+                    - column:
+                        name: role_id
+                        type: numeric
+                encoding: UTF-8
+                file: ../data/account-roles.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: account_role
+                usePreparedStatements: true
