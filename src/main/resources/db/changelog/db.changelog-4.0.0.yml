@@ -105,7 +105,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                             foreignKeyName: fk_special_meeting_recorded_by
-                            references: account(user_id)
+                            references: account(id)
                             nullable: false
                     - column:
                         name: record_date
@@ -118,7 +118,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_special_meeting_updated_by
-                           references: account(user_id)
+                           references: account(id)
                     - column:
                         name: update_date
                         type: TIMESTAMP
@@ -184,7 +184,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_special_meeting_attendance_recorded_by
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name: record_date
@@ -197,7 +197,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_special_meeting_attendance_updated_by
-                           references: account(user_id)
+                           references: account(id)
                     - column:
                         name: update_date
                         type: TIMESTAMP
@@ -207,19 +207,19 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_special_meeting_attendance_signature1
-                           references: account(user_id)
+                           references: account(id)
                     - column:
                         name:  sign2
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_special_meeting_attendance_signature2
-                           references: account(user_id)
+                           references: account(id)
                     - column:
                         name:  sign3
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_special_meeting_attendance_signature3
-                           references: account(user_id)
+                           references: account(id)
     - changeSet:
         id:  4.0.3.attendance_register
         author:  Mothusi Molorane
@@ -245,7 +245,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_special_meeting_register_user_id
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
     - changeSet:
         id: 4.1.0.load-institutions
@@ -287,7 +287,7 @@ databaseChangeLog:
                         constraints:
                             primaryKey: true
                             foreignKeyName: fk_convertion_info_user_id
-                            references: account(user_id)
+                            references: account(id)
                             nullable: false
                     - column:
                         name:  convertion_date
@@ -311,7 +311,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                             foreignKeyName: fk_convertion_info_spiritual_father
-                            references: account(user_id)
+                            references: account(id)
                             nullable: true
                     - column:
                         name:  spiritual_father
@@ -351,7 +351,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                             foreignKeyName: fk_offering_info_recorded_by
-                            references: account(user_id)
+                            references: account(id)
                             nullable: false
                     - column:
                         name:  record_date
@@ -364,14 +364,14 @@ databaseChangeLog:
                         type: BIGSERIAL
                         constraints:
                             foreignKeyName: fk_offering_info_signature1
-                            references: account(user_id)
+                            references: account(id)
                             nullable: true
                     - column:
                         name:  update_by
                         type:  BIGSERIAL
                         constraints:
                             foreignKeyName: fk_offering_info_update_by
-                            references: account(user_id)
+                            references: account(id)
                             nullable: false
                     - column:
                         name:  update_date

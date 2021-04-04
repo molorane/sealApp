@@ -15,10 +15,10 @@ spring:
 
 # Local profile
 spring:
-  profiles: local
-  cloud:
-    config:
-      uri: http://localhost:7777
+  config:
+    import: optional:configserver:http://localhost:7777
+    activate:
+      on-profile: local
 
 ---
 

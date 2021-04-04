@@ -28,7 +28,7 @@ databaseChangeLog:
                 tableName:  account
                 columns:
                     - column:
-                        name:  user_id
+                        name:  id
                         type:  BIGSERIAL
                         autoIncrement: true
                         constraints:
@@ -99,7 +99,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_account_info_user_id
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name: last_name
@@ -144,7 +144,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_account_role_user_id
-                           references: account(user_id)
+                           references: account(id)
                     - column:
                         name:  role_id
                         type:  BIGSERIAL
@@ -401,7 +401,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_student_user_id
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name:  institution_branch_id
@@ -439,7 +439,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_student_recorded_by
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
     - changeSet:
         id:  1.1.6.church-category-table
@@ -523,7 +523,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                             foreignKeyName: fk_church_recorded_by
-                            references: account(user_id)
+                            references: account(id)
                             nullable: false
                     - column:
                         name: record_date
@@ -536,7 +536,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_church_updated_by
-                           references: account(user_id)
+                           references: account(id)
                     - column:
                         name: update_date
                         type: TIMESTAMP
@@ -546,7 +546,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_church_started_by
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name:  start_place
@@ -670,7 +670,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_attendance_recorded_by
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name: record_date
@@ -683,7 +683,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_student_updated_by
-                           references: account(user_id)
+                           references: account(id)
                     - column:
                         name: update_date
                         type: TIMESTAMP
@@ -693,19 +693,19 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_student_signature1
-                           references: account(user_id)
+                           references: account(id)
                     - column:
                         name:  sign2
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_student_signature2
-                           references: account(user_id)
+                           references: account(id)
                     - column:
                         name:  sign3
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_student_signature3
-                           references: account(user_id)
+                           references: account(id)
     - changeSet:
         id:  1.2.1.attendance_register
         author:  Mothusi Molorane
@@ -724,7 +724,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_attendance_register_account_id
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name:  church_id
@@ -852,7 +852,7 @@ databaseChangeLog:
                         type: BIGSERIAL
                         constraints:
                             foreignKeyName: fk_account_info_recorded_by
-                            references: account(user_id)
+                            references: account(id)
                             nullable: false
                     - column:
                         name: record_date
@@ -865,7 +865,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_account_info_updated_by
-                           references: account(user_id)
+                           references: account(id)
                     - column:
                         name: update_date
                         type: TIMESTAMP

@@ -17,7 +17,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_campus_student_user_id
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name:  institution_id
@@ -57,7 +57,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_campus_student_record_by
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name: record_date
@@ -70,7 +70,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_campus_student_updated_by
-                           references: account(user_id)
+                           references: account(id)
                     - column:
                         name: update_date
                         type: TIMESTAMP
@@ -93,14 +93,14 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_wedding_bride_groom
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name:  bride
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_wedding_bride
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name:  wed_date
@@ -112,21 +112,21 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_wedding_pastor
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name:  bride_groom_witness
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_wedding_bride_groom_witness
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name:  bride_witness
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_wedding_bride_witness
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name:  dowry
@@ -150,7 +150,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_wedding_record_by
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name: record_date
@@ -163,7 +163,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_wedding_updated_by
-                           references: account(user_id)
+                           references: account(id)
                     - column:
                         name: update_date
                         type: TIMESTAMP
@@ -244,7 +244,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_student_position_record_by
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name: record_date
@@ -257,7 +257,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_student_position_updated_by
-                           references: account(user_id)
+                           references: account(id)
                     - column:
                         name: update_date
                         type: TIMESTAMP
@@ -333,7 +333,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_stmc_registration_student
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name:  course
@@ -347,7 +347,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_stmc_registration_record_by
-                           references: account(user_id)
+                           references: account(id)
                            nullable: false
                     - column:
                         name: record_date
@@ -360,7 +360,7 @@ databaseChangeLog:
                         type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_stmc_registration_updated_by
-                           references: account(user_id)
+                           references: account(id)
                     - column:
                         name: update_date
                         type: TIMESTAMP
