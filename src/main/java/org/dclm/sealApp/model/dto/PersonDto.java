@@ -10,7 +10,6 @@ import java.time.LocalDate;
 
 @Data
 public class PersonDto {
-    private String idno;
     private String firstName;
     private String lastName;
     private String otherName;

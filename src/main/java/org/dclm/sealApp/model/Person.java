@@ -22,7 +22,7 @@ public class Person implements Serializable {
 	private Long id;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "user_id")
 	private Account account;
 
 	@NotEmpty(message = "last name Required.")

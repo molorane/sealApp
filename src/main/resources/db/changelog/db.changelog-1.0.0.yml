@@ -125,13 +125,9 @@ databaseChangeLog:
                     - column:
                         name: marital_status
                         type: varchar(10)
-                        constraints:
-                           nullable: false
                     - column:
                         name: race
                         type: varchar(10)
-                        constraints:
-                           nullable: false
     - changeSet:
         id:  1.0.4.account-role
         author:  Mothusi Molorane
