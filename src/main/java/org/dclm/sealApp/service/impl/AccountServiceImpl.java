@@ -73,8 +73,6 @@ public class AccountServiceImpl implements AccountService {
         account.setPassword(bcryptEncoder.encode(user.getAccountDto().getPassword()));
         account.setRoles(new HashSet<Role>(Arrays.asList(role)));
 
-        account = accountRepository.save(account);
-
         Person person = new Person();
         person.setAccount(account);
         person.setFirstName(user.getPersonDto().getFirstName());
