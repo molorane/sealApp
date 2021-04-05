@@ -85,6 +85,10 @@ public class AccountController {
                     .findAccountRoleId(account.getId(), role.getId())).withSelfRel();
             accountRole.add(selfLink);
 
+            Link back = linkTo(methodOn(AccountController.class)
+                    .findById(account.getId())).withRel("accounts");
+            accountRole.add(back);
+
             return accountRole;
         }).collect(Collectors.toList());
 
