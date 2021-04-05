@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/admin")
+@RequestMapping("api/v1/continents")
 public class ContinentController {
 
     @Autowired
     private ContinentService continentService;
 
-    @GetMapping("/continents")
+    @GetMapping
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> getAllContinents() {
         List<Continent> continents  =  continentService.findAll();

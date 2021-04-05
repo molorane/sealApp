@@ -11,7 +11,7 @@ public class AbstractEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @NotEmpty(message = "name required.")
     @Column(nullable = false, unique = true)

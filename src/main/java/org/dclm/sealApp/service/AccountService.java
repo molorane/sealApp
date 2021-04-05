@@ -2,6 +2,7 @@ package org.dclm.sealApp.service;
 
 import org.dclm.sealApp.model.Account;
 import org.dclm.sealApp.model.dto.RegisterDto;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
@@ -11,6 +12,6 @@ public interface AccountService extends UserDetailsService {
     Account register(RegisterDto user);
     Optional<Account> findByUsername(String username);
     Optional<Account> findByEmail(String email);
-    List<Account> findAll();
+    Page<Account> findAll();
     Optional<Account> findById(Long id);
 }

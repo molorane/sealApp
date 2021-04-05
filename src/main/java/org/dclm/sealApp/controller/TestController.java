@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.Optional;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @RestController
 public class TestController {
@@ -38,14 +39,6 @@ public class TestController {
     @GetMapping("api/auth/account/{accountId}")
     public Optional<Account> findByAccountId(@PathVariable("accountId") Long accountId){
         return accountService.findById(accountId);
-    }
-
-    @GetMapping("api/auth/accounts")
-    public ResponseEntity<?> getAllAccounts(){
-        List<Account> accounts  =  accountService.findAll();
-        if(accounts == null)
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(accounts, HttpStatus.OK);
     }
 
     @GetMapping("api/auth/person/{idno}")

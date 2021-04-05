@@ -2,6 +2,7 @@ package org.dclm.sealApp.controller;
 
 import org.dclm.sealApp.model.Account;
 import org.dclm.sealApp.service.AccountService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,7 @@ public class AdminController {
 
     @GetMapping("/accounts")
     public ResponseEntity<?> getAllAccounts() {
-        List<Account> accounts = accountService.findAll();
+        Page<Account> accounts = accountService.findAll();
         if (accounts == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(accounts, HttpStatus.OK);

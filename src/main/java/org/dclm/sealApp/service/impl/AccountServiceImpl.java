@@ -15,6 +15,10 @@ import org.dclm.sealApp.repository.AccountRepository;
 import org.dclm.sealApp.repository.RoleRepository;
 import org.dclm.sealApp.service.AccountService;
 import org.dclm.sealApp.service.PersonService;
+import org.springframework.core.env.Environment;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -36,6 +40,7 @@ public class AccountServiceImpl implements AccountService {
     private final PersonService personService;
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder bcryptEncoder;
+    private final Environment environment;
 
 
     @Override
@@ -69,7 +74,7 @@ public class AccountServiceImpl implements AccountService {
         account.setUsername(user.getAccountDto().getUsername());
         account.setPassword(bcryptEncoder.encode(user.getAccountDto().getPassword()));
         account.setEmail(user.getAccountDto().getEmail());
-        Role role = roleRepository.findByName("MEMBER").get();
+        Role role = roleRepository.findByName(environment.getProperty("role.default")).get();
         account.setPassword(bcryptEncoder.encode(user.getAccountDto().getPassword()));
         account.setRoles(new HashSet<Role>(Arrays.asList(role)));
 
@@ -102,8 +107,9 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<Account> findAll() {
-        return accountRepository.findAll();
+    public Page<Account> findAll() {
+        Pageable pageable = PageRequest.of(0,10);
+        return accountRepository.findAll(pageable);
     }
 
     @Override
