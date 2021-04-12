@@ -24,7 +24,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
-@RequestMapping("api/v1/accounts")
+@RequestMapping("/api/v1/accounts")
 public class AccountController {
 
 
@@ -68,6 +68,16 @@ public class AccountController {
         Link selfLink = linkTo(methodOn(AccountController.class)
                 .findById(account.getId())).withSelfRel();
         accountRes.add(selfLink);
+
+        Link rolesLink = linkTo(methodOn(AccountController.class)
+                .findAccountRoles(account.getId())).withRel("roles");
+        accountRes.add(rolesLink);
+
+
+        Link accounts = linkTo(methodOn(AccountController.class)
+                .getAllAccounts()).withRel("accounts");
+        accountRes.add(accounts);
+
         return new ResponseEntity<AccountRes>(accountRes, HttpStatus.ACCEPTED);
     }
 
@@ -86,7 +96,7 @@ public class AccountController {
             accountRole.add(selfLink);
 
             Link back = linkTo(methodOn(AccountController.class)
-                    .findById(account.getId())).withRel("accounts");
+                    .findById(account.getId())).withRel("account");
             accountRole.add(back);
 
             return accountRole;

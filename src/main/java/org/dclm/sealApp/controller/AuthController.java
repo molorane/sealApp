@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("api/v1/auth")
+@RequestMapping("/api/v1/auth")
 public class AuthController {
 
     protected final Log logger = LogFactory.getLog(this.getClass());

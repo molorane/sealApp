@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/admin")
+@RequestMapping("/api/v1/admin")
 public class AdminController {
 
     @Resource(name = "accountService")

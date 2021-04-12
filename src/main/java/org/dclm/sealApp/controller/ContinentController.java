@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/continents")
+@RequestMapping("/api/v1/continents")
 public class ContinentController {
 
     @Autowired

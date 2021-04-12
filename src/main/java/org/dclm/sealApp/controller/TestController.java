@@ -27,7 +27,7 @@ public class TestController {
     @Autowired
     private PersonService personService;
 
-    @GetMapping("api/auth/test")
+    @GetMapping("/api/auth/test")
     @ApiOperation(value = "testing")
     public String getIt(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -36,12 +36,12 @@ public class TestController {
         return "Love rest";
     }
 
-    @GetMapping("api/auth/account/{accountId}")
+    @GetMapping("/api/auth/account/{accountId}")
     public Optional<Account> findByAccountId(@PathVariable("accountId") Long accountId){
         return accountService.findById(accountId);
     }
 
-    @GetMapping("api/auth/person/{idno}")
+    @GetMapping("/api/auth/person/{idno}")
     public ResponseEntity<?> getAllAccounts(@PathVariable("idno") String idno){
         return new ResponseEntity<>(personService.findByIdno(idno), HttpStatus.OK);
     }
