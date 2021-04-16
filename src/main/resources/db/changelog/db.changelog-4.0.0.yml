@@ -355,7 +355,7 @@ databaseChangeLog:
                             nullable: false
                     - column:
                         name:  record_date
-                        type:  date
+                        type:  TIMESTAMP
                         defaultValueComputed: NOW()
                         constraints:
                            nullable: false
@@ -375,7 +375,7 @@ databaseChangeLog:
                             nullable: false
                     - column:
                         name:  update_date
-                        type:  date
+                        type:  TIMESTAMP
                         defaultValueComputed: NOW()
     - changeSet:
         id:  4.1.9.add-table-offering-type

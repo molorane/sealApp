@@ -74,8 +74,8 @@ databaseChangeLog:
                            nullable: false
                     - column:
                         name: expiry_date
-                        type: date
-                        defaultValueComputed: DATE_ADD(NOW(),INTERVAL 30 DAY)
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()
                     - column:
                         name: profile
                         type: text
